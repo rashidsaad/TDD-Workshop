@@ -1,0 +1,52 @@
+# While in RED step we may start getting improvement ideas in mind (But Goal is to quickly go GREEN).
+  Add those ideas in notes and come back to it later
+
+  1. Rename parameters
+  2. setVariable method name seems to general and it will not swuite when we have more than one variable tests. Hold on! dont over try engineering. To tiny steps
+  3. Minimize use of structure and focus to exposing behaviours (may be create an abstraction to deal with variable names)
+  4. Remove duplication
+
+Apply above refactorings
+Triangulation help us to prevent Premature Optimization, scope creeping and over engineering
+Apply some refactoring to make failing test pass again
+
+[RED-GREEN]-Add second test to triangulate: Add minimal code to make test happy
+Failing Test passed now. Now go back to REFACTOR phase and see if triangulation clarify the abstraction.
+
+-----
+
+[RED-GREEN]-Add third test to triangulate: So now, We reached the tipping point in Triangulate we cannot Fake anymore. Because triangulating multiple variation will return different results. lets fixe it again.
+
+[GREEN]-Add third test to triangulate: Test are passing now by replacing hard code Greeting with Obvious value (but still its hardcode the variable name). We can go ahead and write the Obvious implementation
+straight away but reason to pull back it to make sure we understand every tiny step. Here the opportunity now it to appreciate the value to triangulating the result. Now the
+design clearly showing the behaviour or intent in method evaluate. WHat is important that we can put the Obvious implement when reaching point it cannot get triangulate why
+replace the templateText with another value.
+
+Skipping the Refactoring part, as I cannot see any duplication and improvement as yet. Although our design is still using hard code value but we need another test to
+reveal the obvious implementation.
+
+Add the Obvious Implementation, All tests are passing now
+Note: While Adding obvious implementation we identified potential issue and edge case in Obvious Implementation. wait how we identify the edge, using power of imagination.
+      But if edges cases are not visible and obvious in implementation. How to deal with them ? Do Exploratory Testing
+      Check Mind Map -> Add Test Case -> Exploratory Testing methods
+Edge case in Obvious implement seems like "Boundary Behaviour". let quickly write another test case in requirement to come back to it later.
+Another point here is if this issue occurs, without following TDD practice, this can also be apply through Test First Programming to find bugs early, See Mind Map "Bug Fixes" -> "Test First Programming"
+
+
+[REFACTOR]-Leaving REFACTOR phase.
+REFACTOR and remove duplication
+// Note: We can see few thing need Refactoring. Like evaluate method looks imperative and verbose, we can change it to use functional stream.
+//      -- But we leave it fow now as the GOAL here 0is to concentrate on understand TDD concept while we have built the flow. I real projects we need to these refactoring. Never leave REFACTOR phase in real work scenario
+
+---
+
+Now looks for new test cases in requirements
+Seems like we 1 and 2. looking to tests its passing on both one and more variables.
+Anything Noticed ???
+Adding Obvious Implementation with new abstraction will now covered both test case 1 & 2. (this is power of Triangulation) Check Mind Map -> "Triangulation" -> "Design Benefits"
+
+
+Now look for more cases in requirements
+What about the fourth Test case
+Lets add the test now.
+------

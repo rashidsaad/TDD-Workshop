@@ -1,0 +1,32 @@
+# Requirements
+
+1. The system replaces variable placeholder like ${firstname} and £{lastname} from the template with values provided at runtime
+
+2. The system attempt to send a template with some variable not populated will raise an error
+
+3. The system silently ignores values for variables that aren't found in the template
+
+
+
+# Tests
+
+1. Evaluating template "Hello, ${name}" with the value "Reader" for variable "name" results in the String "Hello, Reader".
+
+2. Evaluating template "${greeting}, ${name}" with values "Hi" and "Reader", respectively, results in the string "Hi, Reader".
+
+3. Evaluating template "Hello, ${name}" with no value for variable "name" raises a MissingValueError
+
+4. Evaluating template "Hello, ${name}" with values "Hi" and "Reader" for variables "doesnotexist" and "name", respectively, results in the
+string "Hello, Reader".
+
+5. Evaluating template "Hello, Sir" with no values for variables results same string "Hello, Sir"
+
+6. Boundary Behaviour / Edge Case: Evaluate template "${one}", ""${two}", "${three}" with values "1", "${foo}", and "3". verify if template behaviour
+will renders the result as "1, ${foo}, 3"
+
+* These test can you derived directly from specification and are executable.
+
+* When these test are passed that means "The task under this story are DONE". but requirements are still not fully DONE. there are aspect of
+requirements like system will handle multiple character sets or conditional template parsing e.t.c
+
+* There is possibility to miss some test scenario within our Acceptance criteria in User Story. We need to do exploratory testing to find those use cases.
